@@ -1,3 +1,35 @@
 console.log('DOM');
 
-const curr = document.querySelector('.js-curr');
+let curr = document.querySelector('.js-curr');
+const currParent = curr.parentElement;
+
+const currParentSibling = currParent.nextElementSibling;
+currParentSibling.setAttribute('title', 'nextSiblingElement');
+
+const currLastParentSibling = currParentSibling.nextElementSibling;
+console.log(currLastParentSibling);
+const newParagraph = document.createElement('p');
+
+const cloneArt = currParent.cloneNode(true);
+const art = document.querySelector('.articles');
+
+art.insertAdjacentElement('afterbegin', cloneArt);
+
+newParagraph.textContent = 'Lorem Ipsum dolor sit amet';
+const pEl = currLastParentSibling.querySelector('p');
+currLastParentSibling.insertBefore(newParagraph, pEl);
+
+const btn = document.createElement('button');
+btn.textContent = 'Usuń z koszyka';
+curr.insertAdjacentElement('afterend', btn);
+
+let siblingEl = curr.nextElementSibling;
+const siblingsArr = [];
+
+while ((curr = curr.nextElementSibling)) {
+  siblingsArr.push(siblingEl);
+}
+
+siblingsArr.forEach((el) => {
+  el.className = '.siblings';
+});
