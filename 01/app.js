@@ -1,4 +1,4 @@
-const commentsItemNewest = document.querySelector('.comments__item', '.comments__item--newest');
+const commentsItemNewest = document.querySelector('.comments__item.comments__item--newest');
 const childrenOfLi = commentsItemNewest.querySelectorAll('p');
 
 let listOfSpan;
