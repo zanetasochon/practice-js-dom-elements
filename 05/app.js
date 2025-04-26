@@ -7,7 +7,6 @@ const currParentSibling = currParent.nextElementSibling;
 currParentSibling.setAttribute('title', 'nextSiblingElement');
 
 const currLastParentSibling = currParentSibling.nextElementSibling;
-console.log(currLastParentSibling);
 const newParagraph = document.createElement('p');
 
 const cloneArt = currParent.cloneNode(true);
@@ -23,13 +22,11 @@ const btn = document.createElement('button');
 btn.textContent = 'Usuń z koszyka';
 curr.insertAdjacentElement('afterend', btn);
 
-let siblingEl = curr.nextElementSibling;
-const siblingsArr = [];
+let siblingEl = curr.parentElement.children;
+console.log(siblingEl);
 
-while ((curr = curr.nextElementSibling)) {
-  siblingsArr.push(siblingEl);
-}
-
-siblingsArr.forEach((el) => {
-  el.className = '.siblings';
+[...siblingEl].forEach((el) => {
+  if (el !== curr) {
+    el.className = 'siblings';
+  }
 });
