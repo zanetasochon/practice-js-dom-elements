@@ -15,31 +15,19 @@ const buttonSettings = {
 
 const button = document.createElement('button');
 
-for (const key in buttonSettings) {
-  if (key === 'attr') {
-    for (const key in buttonSettings.attr) {
-      if (key === 'className') {
-        button.classList.add(key);
-      } else {
-        button.setAttribute(key, buttonSettings.attr[key]);
-      }
-    }
-  }
-
-  key === 'text' ? (button.textContent = buttonSettings.text) : undefined;
-
-  if (key === 'css') {
-    for (const key in buttonSettings.css) {
-      if (key === 'border') {
-        button.style[key] = buttonSettings.css[key];
-      } else if (key === 'padding') {
-        button.style[key] = buttonSettings.css[key];
-      } else if (key === 'color') {
-        button.style[key] = buttonSettings.css[key];
-      }
-    }
+for (const key in buttonSettings.attr) {
+  if (key === 'className') {
+    button.classList.add(key);
+  } else {
+    button.setAttribute(key, buttonSettings.attr[key]);
   }
 }
+
+for (const key in buttonSettings.css) {
+  button.style[key] = buttonSettings.css[key];
+}
+
+button.textContent = buttonSettings.text;
 
 const sectionEl = document.querySelector('section');
 sectionEl.appendChild(button);
